@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+
+<body class="bdy1">
+    <div class="container mt-4">
+        <h2 class="text-center my-5 mt-3 p-0" style="font-weight: 900;"><b>Student Information</b></h2>
+        <button type="button" value="Submit" id="button" class="btn btn-secondary text1 mx-auto d-block mt-5 shadow"><a
+                href="index1.html" class="text-light "><b>ADD</b></a></button>
+        <div id="table1" class="table-responsive-sm" style="display: none;">
+            <table class="table table-bordered table-hover shadow   my-5 text-center mx-auto  w-100">
+                <thead class="table-primary">
+                    <tr>
+                        <th>S.No</th>
+                        <th>Name</th>
+                        <th>EMail</th>
+                        <th>Father's Name</th>
+                        <th>Mobile Number</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="datas"></tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        window.onload = table()
+        function table() {      
+            var data1 = JSON.parse(localStorage.getItem('key'))
+            var output = document.getElementById('table1');
+            //table body 
+            if (data1.length > 0) {
+                output.style.display = "block"
+                if (data1) {
+                    var output1 = ""
+
+                    for (i = 0; i < data1.length; i++) {
+                        output1 += "<tr><td>" + [i + 1];
+                        output1 += "<td>" + data1[i].name
+                        output1 += "<td>" + data1[i].email
+                        output1 += "<td>" + data1[i].fathersname
+                        output1 += "<td>" + data1[i].mobilenumber
+                        output1 += "<td>" + `<button class="btn bg-primary"> <i class="fa-solid fa-pen-to-square  text-white" onclick="edit(${i})"></i></button>&nbsp <button class="btn btn-danger"><i class="fa-solid fa-trash text-white" onclick="deleteRow(${i})"></i></button>`
+                        output1 += "</tr>"
+                    }
+
+                }
+                document.getElementById('datas').innerHTML = output1;
+            }
+            else {
+                output.style.display = "none"
+            }
+
+        }
+        //edit ()
+        function edit(index) {
+            window.location.href = "index1.html?id=" + index;
+        }
+        // table delete
+        function deleteRow(index) {
+            confirm("Are you sure you want to delete?")
+            let delObj = JSON.parse(localStorage.getItem('key'));
+            delObj.splice(index, 1);
+            localStorage.setItem('key', JSON.stringify(delObj));
+            console.log(delObj)
+         }
+
+    </script>
+</body>
+
+</html>
+
