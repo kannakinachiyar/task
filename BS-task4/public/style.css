@@ -1,0 +1,81 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+
+.nav-link{
+    color:white;
+}
+nav ul li.active a {
+    color: red; /* Apply your active link color */
+  }
+  
+
+.image{
+    background-color: rgb(55, 160, 108); 
+    height:700px;
+}
+.portfolio h1{
+ text-align: center;   
+ margin-top: 23px;
+}
+.portfolio img:hover{
+opacity: 50%;
+}
+.about{
+    background-color: rgb(55, 160, 108); 
+}
+.about h1{
+text-align: center;
+}
+.about p{
+    column-gap: 20px;
+}
+
+.contact h1{
+    text-align: center;
+}
+.contact button:hover{
+outline: 1px solid black;
+background-color: rgb(106, 160, 106);
+}
+.location{
+    background-color: rgb(47, 47, 82);
+    color: white;
+}
+.copyrite{
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+.btn1{
+    display: flex;
+    justify-content: center;
+}
+
+.btn:hover {
+background-color: white;
+color: black !important;
+}
+
+body{
+    position: relative;
+}
+.nav-item1:hover,
+.nav-item2:hover,
+.nav-item3:hover
+{
+    background-color:  rgb(55, 160, 108); 
+    color: white;
+    border-radius: 5px;
+}
+@media only screen and (max-width:500px){
+    .form{
+        margin-left: 0 !important;
+    }
+    
+}
+
